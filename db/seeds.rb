@@ -61,12 +61,15 @@ def scraper(url)
 
 end
 
-def createPlayer(team_array)
+def createPlayer(team_array, team_name)
     
     team_array.each do |singlePlayer| 
         free_throw_made = singlePlayer["ft"]
         free_throw_attempts = singlePlayer["fta"]
         free_throw_percentage = free_throw_made.to_i / free_throw_attempts.to_i
+        
+        img = singlePlayer["player"].split(' ').join('_').downcase
+
         Player.create(
             name: singlePlayer["player"],
             age: singlePlayer["age"],
@@ -94,43 +97,47 @@ def createPlayer(team_array)
             blocks: singlePlayer["blk"],
             turnovers: singlePlayer["tov"],
             fouls: singlePlayer["pf"],
-            ppg: singlePlayer["pts"]
+            ppg: singlePlayer["pts"],
+            team: team_name,
+            img_url: img.split('.').join('')
         )
         puts "created #{singlePlayer["player"]}"
     end 
 end
 
 atlanta = scraper(atl)
-createPlayer(atlanta)
+createPlayer(atlanta, "ATL")
 boston = scraper(bos)
-createPlayer(boston)
-chicago = scraper(cha)
-createPlayer(chicago)
+createPlayer(boston, "BOS")
+charlotte = scraper(cha)
+createPlayer(charlotte, "CHA")
+chicago = scraper(chi)
+createPlayer(chicago, "CHI")
 cleveland = scraper(cle)
-createPlayer(cleveland)
+createPlayer(cleveland, "CLE")
 dallas = scraper(dal)
-createPlayer(dallas)
+createPlayer(dallas, "DAL")
 denver = scraper(den)
-createPlayer(denver)
+createPlayer(denver, "DEN")
 detroit = scraper(detr)
-createPlayer(detroit)
+createPlayer(detroit, "DET")
 goldenstate = scraper(gsw)
-createPlayer(goldenstate)
+createPlayer(goldenstate, "GSW")
 houston = scraper(hou)
-createPlayer(houston)
+createPlayer(houston, "HOU")
 indiana = scraper(ind)
-createPlayer(indiana)
+createPlayer(indiana, "IND")
 clippers = scraper(lac)
-createPlayer(clippers)
+createPlayer(clippers, "LAC")
 lakers = scraper(lal)
-createPlayer(lakers)
+createPlayer(lakers, "LAL")
 miami = scraper(mia)
-createPlayer(miami)
+createPlayer(miami, "MIA")
 milwauee = scraper(mil)
-createPlayer(milwauee)
+createPlayer(milwauee, "MIL")
 minnesota = scraper(minn)
-createPlayer(minnesota)
+createPlayer(minnesota, "MIN")
 newjersey = scraper(njn)
-createPlayer(newjersey)
+createPlayer(newjersey, "NJN")
 newyork = scraper(nyk)
-createPlayer(newyork)
+createPlayer(newyork, "NYK")

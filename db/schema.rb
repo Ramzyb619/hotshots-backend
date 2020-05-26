@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_183126) do
     t.integer "turnovers"
     t.integer "fouls"
     t.integer "ppg"
+    t.string "team"
+    t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

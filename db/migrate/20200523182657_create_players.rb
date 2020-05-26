@@ -28,6 +28,8 @@ class CreatePlayers < ActiveRecord::Migration[6.0]
       t.integer :turnovers
       t.integer :fouls 
       t.integer :ppg 
+      t.string :team
+      t.string :img_url
       t.timestamps
     end
   end
