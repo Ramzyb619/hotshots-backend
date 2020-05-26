@@ -26,7 +26,8 @@ nyk = 'https://www.basketball-reference.com/pi/shareit/C1QoW'
 
 
 team_urls = [
-    atl, bos, cha, chi, cle, dal, den, detr, gsw, hou, ind, lac, lal, mia, mil, minn, njn, nyk    
+    atl, bos, cha, chi, cle, dal, den, detr, gsw, hou, ind, lac, lal, mia, mil, 
+    minn, njn, nyk    
 ]
 
 
@@ -63,6 +64,9 @@ end
 def createPlayer(team_array)
     
     team_array.each do |singlePlayer| 
+        free_throw_made = singlePlayer["ft"]
+        free_throw_attempts = singlePlayer["fta"]
+        free_throw_percentage = free_throw_made.to_i / free_throw_attempts.to_i
         Player.create(
             name: singlePlayer["player"],
             age: singlePlayer["age"],
@@ -80,6 +84,8 @@ def createPlayer(team_array)
             two_point_percentage: singlePlayer["fg2_pct"],
             efg: singlePlayer["efg_pct"],
             ft: singlePlayer["ft"],
+            fta: singlePlayer["fta"],
+            ft_percentage: free_throw_percentage,
             orb: singlePlayer["orb"],
             drb: singlePlayer["drb"],
             trb: singlePlayer["trb"],
