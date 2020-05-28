@@ -1,2 +1,3 @@
 class PlayedGamesController < ApplicationController
+    
 end
