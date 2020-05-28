@@ -1,2 +1,3 @@
 class TeamPlayersController < ApplicationController
+   
 end
